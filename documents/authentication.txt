@@ -1,0 +1,4 @@
+Authentication allows users to securely access their accounts.
+Users can authenticate using their email and password.
+After successful authentication, the server creates a session for the user.
+Sessions expire after a configured period of inactivity.
