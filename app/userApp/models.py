@@ -14,6 +14,9 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return f"{self.title}"
+
 class Student(models.Model):
     id=models.UUIDField(primary_key=True, default=uuid.uuid4)
     first_name=models.CharField(max_length=150)
@@ -21,9 +24,15 @@ class Student(models.Model):
     level=models.IntegerField()
     department=models.CharField(max_length=200)
 
+    def __str__(self):
+            return f"{self.first_name} {self.last_name}"
+
 class LibraryRecord(models.Model):
     book=models.ForeignKey(Book, on_delete=models.CASCADE)
     student=models.ForeignKey(Student, on_delete=models.CASCADE)
     borrowed_at = models.DateTimeField(auto_now_add=True)
     due_at=models.DateTimeField()
     returned_at=models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+            return f"{self.student.first_name} borrowed {self.book.title}"
